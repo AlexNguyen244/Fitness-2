@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Log</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/barchart.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+
+    <link href="reset.css" rel="stylesheet" type="text/css" />
+    <link href="./css/fitnessLog.css" rel="stylesheet" type="text/css" />
+    <script defer src="./js/fitnessLog.js"></script>        
+    <script type="module" src="./js/main.js"></script>
+
+  </head>
+
+  <body>
+    <!-- Fitness Log Banner -->
+    <nav>
+      <h3>Fitness Log</h3>
+    </nav>
+
+    <!-- Fitness Log Welcome Message -->
+    <header>
+      <div id="welcome">
+        <h1>Welcome back,<br><span id="username">Joey!</span></h1>
+        <img id="workoutImage" src="./images/header_image.png" alt="people playing sports" />
+        <p class="subtitle">What activity session are you logging?</p>
+      </div>
+    </header>
+            
+    <div id="overlay">
+      <div class="pop-up">
+        <button id="exitViewProg" class="exitBtn">&#10006;</button>
+        <div class="line-above" id = "viewProgInput">
+            <div class = "ViewProgWrapper">
+              View activity for: 
+              <select name="past-activies" id="viewProg-pAct-activity" class="view_activity" >
+                        <option value="Empty"></option>
+                        <option value="Walk">Walk</option>
+                        <option value="Run">Run</option>
+                        <option value="Swim">Swim</option>
+                        <option value="Bike">Bike</option>
+                        <option value="Yoga">Yoga</option>
+                        <option value="Soccer">Soccer</option>
+                        <option value="Basketball">Basketball</option>
+                      </select>
+            </div>
+            <div class = "ViewProgWrapper">
+              Week ending:
+              <input type="date" id="viewProg-pAct-date" class="view_date" value=""/>
+            </div>
+            <button id="goButton" class="progBtn">Go</button>
+        </div>
+        <div id='chart-anchor'></div>
+      </div>
+    </div>
+    
+    <main>
+      <div id = "reminder" class ="reminder-container">
+        <div class="row1">
+          <h2> Reminder <h2>
+        </div>
+        <div class="row">
+          <h4 id = "rq"> Did you<span id="activity"></span><span id="AA"></span></h4>
+          <div class = "row1">
+          <button id="YesBtn" class="YesButton">Yes</button>
+          <button id="NoBtn" class="NoButton">No</button>
+          </div>      
+        </div>
+      </div>
+      <!-- Past Activities Section -->
+      <div id="past-activity" class="main-container">
+        <div class="row">
+          <h3 class="container-title">Past Activity</h3>
+          <button id="viewProgressButton" class="progBtn">View Progress</button>
+        </div>
+        <div class="content-container">
+
+          <!-- Past Activities Add New Button -->
+          <div id="pAct-Add" class="form-container">
+            <button id="addPastActivityButton" class="addBtn">Add New Activity</button>
+          </div>
+          
+          <!-- Past Activities Form -->
+          <div id="pAct-Form" class="form-container hide">
+            <div class="pseudoform">
+              <label>
+                Date
+                <input type="date" id="pAct-date" />
+              </label>
+
+              <div id="activity-for-wrapper">
+                <label>
+                  Activity
+                  <select name="past-activies" id="pAct-activity" >
+                    <option value="Walk">Walk</option>
+                    <option value="Run">Run</option>
+                    <option value="Swim">Swim</option>
+                    <option value="Bike">Bike</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="Soccer">Soccer</option>
+                    <option value="Basketball">Basketball</option>
+                  </select>
+                </label>
+                <div class="form-label">for</div>
+              </div>
+              
+              <div id="scalar-unit-wrapper">
+                <label id="label-scalar">
+                  Time/Distance
+                  <input type="number" id="pAct-scalar"/>
+                </label>
+                <label id="label-units">
+                  Units
+                  <input name="text" id="pAct-unit" value="km" readonly />
+                </label>
+              </div>
+              <button type="button" id="submitPastActivityButton" class="form-button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      <!-- Future Plans Section -->
+      <div id="future-activity" class="main-container">
+        <h3 class="container-title">Future Plans</h3>
+        <div class="content-container">
+
+          <!-- Future Plans Add New Button -->
+          <div id="fAct-Add" class="form-container">
+            <button id="addFutureActivityButton" class="addBtn">Add New Activity</button>
+          </div>
+          
+          <!-- Future Plans Form -->
+          <div id="fAct-Form" class="form-container hide">
+            <div class="pseudoform">
+              <label>
+                  Date
+                <input type="date" id="fAct-date" />
+              </label>
+              <label>
+                Activity
+                <select name="future-activies" id="fAct-activity">
+                  <option value="Walk">Walk</option>
+                  <option value="Run">Run</option>
+                  <option value="Swim">Swim</option>
+                  <option value="Bike">Bike</option>
+                  <option value="Yoga">Yoga</option>
+                  <option value="Soccer">Soccer</option>
+                  <option value="Basketball">Basketball</option>
+                </select>
+              </label>
+              <button type="button" id="submitFutureActivityButton" class="form-button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
